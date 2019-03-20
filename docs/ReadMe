@@ -1,0 +1,86 @@
+I have decided that instead of parsing HL7 into generic HL7 Objects, I would parse them into the real events/objects that they represent. For example, the PID segment is parsed into a patient(pt) object. This will make storing, editing, querying the data easier. 
+
+I will create generic functions for parsing data types, but each segment in a feild will be parsed with what each parsed into an appropriately named key for the object. 
+
+
+TODO: DataTypes to parse (these are created pre_emptively) 2.3
+MUST IMPLEMENT ENCODEING AND DECODING TO COMPLETE and tests
+X - DONE
+T - Test exists
+- - STARTED
+
+Alphanumeric
+[T] ST - String
+[T] TX - Text
+[T] FT - Formatted text data
+
+Numerical
+[T] CQ - Composite Quantity with units
+[T] MO - Money
+[T] NM - Numeric
+[T] SI - Sequence ID
+[T] SN - Structured Numeric
+
+Identifier
+[T] ID - ID
+[T] IS - Coded value for userdefined table
+[T] HD - Hierarchic designator
+[T] EI - Entity Identifier
+[T] RP - Reference pointer
+[T] PL - Person Location
+[T] PT - Processing Type
+
+Date/Time
+[T] DT - Date
+[T] TM - Time
+[T] TS - Timestamp
+ 
+Code Values
+[T] CE - Coded Element
+[T] CF - Coded Element (Formatted Vlues)
+[T] CK - Composite ID with check digit
+[T] CN - Composite ID and name
+[T] CX - Extended Composite ID with check digit
+[T] XCN- Extended composite ID and name
+
+Generic
+[ ] CM - Composite
+
+Demographics
+[T] AD - Address
+[T] PN - Person name
+[T] TN - Telephone number
+[T] XAD - Extended Address
+[T] XPN - Extended Person name
+[T] XON - Extended Composite name and ID number for organizations
+[T] XTN - Extended Telecom number
+
+Specialty/Chapter Specific
+- Waveform
+    [ ] CD - Channel definitino
+    [ ] MA - Multiplexed array
+    [ ] NA - Numeric array
+    [ ] ED - Encapsulated data
+- Price data
+    [ ] CP - Composite Price
+- Patient Administration/ Financial Information
+    [ ] FC - Financial Class
+
+Extedned Queries
+[ ] QSC- Query selection criteria
+[ ] QIP- Query input param list
+[ ] RCD- Row column definition
+
+Master Files
+[ ] DLN- Drivers License Number
+[ ] JCC- Job code/class
+[ ] VH - Visiting Hours
+
+Medical Records/Information Management
+[ ] PPN- Performing person timestamp
+
+Time Series
+[ ] DR - Date/time range
+[ ] RI - Repeat Interval
+[ ] SCV- Scheduling class value pair
+[ ] TQ - Timing/Quality
