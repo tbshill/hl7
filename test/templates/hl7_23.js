@@ -91,7 +91,18 @@ describe('Segments for Version 2.3', () => {
   });
   xit('MK1');
   xit('NPU');
-  xit('NTE');
+  it('NTE', () => {
+    const nte_parser = segments.builder(new segments.templates['2.3'].nte_template(), {});
+    const nte = 'NTE|1|L|NOTE: Submission of serum';
+    const parsed = nte_parser(nte);
+    const expected = {
+      comment: 'NOTE: Submission of serum',
+      set_id: 1,
+      source: 'L'
+    };
+
+    assert.deepStrictEqual(parsed, expected, 'Could not parse NTE');
+  });
   xit('OBR');
   xit('OBX');
   xit('ODS');

@@ -61,6 +61,27 @@ const templates = {
     this.death_date = components => datatypes.parse_TS(components[29]);
     this.death_indicator = components => datatypes.parse_ID(components[30]);
   },
+  orc_template: function orc_template() {
+    this.order_control = components => datatypes.parse_ID(components[1]);
+    this.placer_order_number = components => datatypes.parse_EI(components[2]); // TODO: build parse_EI
+    this.filler_order_number = components => datatypes.parse_EI(components[3]);
+    this.placer_group_number = components => datatypes.parse_EI(components[4]);
+    this.order_status = components => datatypes.parse_ID(components[5]);
+    this.response_flag = components => datatypes.parse_ID(components[6]);
+    this.quanity_timing = components => datatypes.parse_TQ(components[7]); // TODO: build parse_TQ
+    this.parent = components => datatypes.parse_CM(components[8]);
+    this.transaction_date = components => datatypes.parse_TS(components[9]);
+    this.entered_by = components => datatypes.parse_XCN(components[10]);
+    this.verified_by = components => datatypes.parse_XCN(components[11]);
+    this.ordering_provider = components => datatypes.parse_XCN(components[12]);
+    this.enterers_location = components => datatypes.parse_PL(components[13]);
+    this.call_back_number = components => datatypes.parse_XTN(components[14]);
+    this.order_effective_date = components => datatypes.parse_TS(components[15]);
+    this.order_control_code_reason = components => datatypes.parse_CE(components[16]);
+    this.entering_organization = components => datatypes.parse_CE(components[17]);
+    this.entering_device = components => datatypes.parse_CE(components[18]);
+    this.action_by = components => datatypes.parse_XCN(components[19]);
+  },
   msa_template: function msa_template() {
     this.ack_code = components => datatypes.parse_ID(components[1]);
     this.message_control_id = components => datatypes.parse_ST(components[2]);
