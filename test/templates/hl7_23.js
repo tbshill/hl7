@@ -108,7 +108,161 @@ describe('Segments for Version 2.3', () => {
   xit('PDC');
   xit('PEO');
   xit('PES');
-  xit('PID');
+  it('PID', () => {
+    const pid_parser = segments.builder(new segments.templates['2.3'].pid_template(), {});
+    const pid =
+      'PID|||PATID1234^5^M11||JONES^WILLIAM^A^III||19610615|M-||C|1200 N ELMSTREET^^GREENSBORO^NC^27401-1020|GL|(91-9)379-1212|(919)271-3434||S||PATID12345001^2^M10|123456789|9-87654^NC';
+    const parsed = pid_parser(pid);
+
+    const expected = {
+      set_id: '',
+      external_id: {
+        id: '',
+        check_digit: '',
+        check_digit_schema_code: '',
+        assigning_authority: { namespace_id: '', universal_id: '', universal_id_type: '' },
+        identifier_code: '',
+        assigning_facility: { namespace_id: '', universal_id: '', universal_id_type: '' }
+      },
+      internal_id: {
+        id: 'PATID1234',
+        check_digit: '5',
+        check_digit_schema_code: 'M11',
+        assigning_authority: { namespace_id: '', universal_id: '', universal_id_type: '' },
+        identifier_code: '',
+        assigning_facility: { namespace_id: '', universal_id: '', universal_id_type: '' }
+      },
+      alernate_id: {
+        id: '',
+        check_digit: '',
+        check_digit_schema_code: '',
+        assigning_authority: { namespace_id: '', universal_id: '', universal_id_type: '' },
+        identifier_code: '',
+        assigning_facility: { namespace_id: '', universal_id: '', universal_id_type: '' }
+      },
+      name: {
+        family: 'JONES',
+        given: 'WILLIAM',
+        middle: 'A',
+        suffix: 'III',
+        prefix: '',
+        degree: '',
+        type: '',
+        representation: ''
+      },
+      mothers_name: {
+        family: '',
+        given: '',
+        middle: '',
+        suffix: '',
+        prefix: '',
+        degree: '',
+        type: '',
+        representation: ''
+      },
+      dob: { time: new Date('1961-06-15 0:00'), precision: '' },
+      sex: 'M-',
+      alias: {
+        family: '',
+        given: '',
+        middle: '',
+        suffix: '',
+        prefix: '',
+        degree: '',
+        type: '',
+        representation: ''
+      },
+      race: 'C',
+      address: {
+        street: '1200 N ELMSTREET',
+        other: '',
+        city: 'GREENSBORO',
+        state: 'NC',
+        zip: '27401-1020',
+        country: '',
+        type: '',
+        other_geograpic: '',
+        county: '',
+        census_tract: ''
+      },
+      country_code: 'GL',
+      home_phone: {
+        number: '(91-9)379-1212',
+        telecommunication_code: '',
+        telecommunication_equipment_type: '',
+        email: '',
+        country_code: '',
+        area_code: '',
+        phone_number: '',
+        extension: '',
+        text: ''
+      },
+      cell_phone: {
+        number: '(919)271-3434',
+        telecommunication_code: '',
+        telecommunication_equipment_type: '',
+        email: '',
+        country_code: '',
+        area_code: '',
+        phone_number: '',
+        extension: '',
+        text: ''
+      },
+      primary_langage: {
+        identifier: '',
+        text: '',
+        coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        alternate_coding_system: ''
+      },
+      marital_status: 'S',
+      religion: '',
+      account_number: {
+        id: 'PATID12345001',
+        check_digit: '2',
+        check_digit_schema_code: 'M10',
+        assigning_authority: { namespace_id: '', universal_id: '', universal_id_type: '' },
+        identifier_code: '',
+        assigning_facility: { namespace_id: '', universal_id: '', universal_id_type: '' }
+      },
+      ssn: '123456789',
+      drivers_license: { number: '9-87654', state: 'NC', expiration: '' },
+      mothers_identifier: {
+        id: '',
+        check_digit: '',
+        check_digit_schema_code: '',
+        assigning_authority: { namespace_id: '', universal_id: '', universal_id_type: '' },
+        identifier_code: '',
+        assigning_facility: { namespace_id: '', universal_id: '', universal_id_type: '' }
+      },
+      ethnic_group: '',
+      birth_place: '',
+      multiple_birth_indicator: '',
+      birth_order: '',
+      citizenship: '',
+      military_status: {
+        identifier: '',
+        text: '',
+        coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        alternate_coding_system: ''
+      },
+      nationality: {
+        identifier: '',
+        text: '',
+        coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        alternate_coding_system: ''
+      },
+      death_date: { time: '', precision: '' },
+      death_indicator: ''
+    };
+    assert.deepStrictEqual(parsed, expected, 'Could not parse MSH segment');
+    // console.log(parsed);
+  });
   xit('PR1');
   xit('PRA');
   xit('PRC');

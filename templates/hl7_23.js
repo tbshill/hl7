@@ -29,10 +29,9 @@ const templates = {
     this.principle_language = components => datatypes.parse_CE(components[18] || '');
   },
 
-  // TODO: Build tests
   pid_template: function pid_template() {
-    this.set_id = components => datatypes.parse_SI(components[1]); // TODO: Build parse_SI
-    this.external_id = components => datatypes.parse_CX(components[2]); // TODO: Build parse_CX
+    this.set_id = components => datatypes.parse_SI(components[1]);
+    this.external_id = components => datatypes.parse_CX(components[2]);
     this.internal_id = components => datatypes.parse_CX(components[3]);
     this.alernate_id = components => datatypes.parse_CX(components[4]);
     this.name = components => datatypes.parse_XPN(components[5]);
@@ -43,14 +42,14 @@ const templates = {
     this.race = components => datatypes.parse_IS(components[10]);
     this.address = components => datatypes.parse_XAD(components[11]);
     this.country_code = components => datatypes.parse_IS(components[12]);
-    this.home_phone = components => datatypes.parse_XTN(components[13]); // TODO: Build parse_XTN
+    this.home_phone = components => datatypes.parse_XTN(components[13]);
     this.cell_phone = components => datatypes.parse_XTN(components[14]);
     this.primary_langage = components => datatypes.parse_CE(components[15]);
     this.marital_status = components => datatypes.parse_IS(components[16]);
     this.religion = components => datatypes.parse_IS(components[17]);
     this.account_number = components => datatypes.parse_CX(components[18]);
     this.ssn = components => datatypes.parse_ST(components[19]);
-    this.drivers_license = components => datatypes.parse_DLN(components[20]); // TODO: Build parse_DLN
+    this.drivers_license = components => datatypes.parse_DLN(components[20]);
     this.mothers_identifier = components => datatypes.parse_CX(components[21]);
     this.ethnic_group = components => datatypes.parse_IS(components[22]);
     this.birth_place = components => datatypes.parse_ST(components[23]);
@@ -82,7 +81,7 @@ const templates = {
     this.admission_type = components => datatypes.parse_IS(components[4]);
     this.preadmit_number = components => datatypes.parse_CX(components[5]);
     this.prior_location = components => datatypes.parse_PL(components[6]);
-    this.attending_doctor = components => datatypes.parse_XCN(components[7]); // TODO: Build parse_XCN
+    this.attending_doctor = components => datatypes.parse_XCN(components[7]);
     this.referring_doctor = components => datatypes.parse_XCN(components[8]);
     this.consulting_doctor = components => datatypes.parse_XCN(components[9]);
     this.hosplital_service = components => datatypes.parse_IS(components[10]);
@@ -100,7 +99,7 @@ const templates = {
     this.courtesy_code = components => datatypes.parse_IS(components[22]);
     this.credit_rating = components => datatypes.parse_IS(components[23]);
     this.contract_code = components => datatypes.parse_IS(components[24]);
-    this.contract_effective_date = components => datatypes.parse_DT(components[25]); // TODO: Build parse_DT
+    this.contract_effective_date = components => datatypes.parse_DT(components[25]);
     this.contract_ammount = components => datatypes.parse_NM(components[26]);
     this.contract_period = components => datatypes.parse_NM(components[27]);
     this.interest_code = components => datatypes.parse_IS(components[28]);

@@ -1,6 +1,7 @@
 const moment = require('moment');
 const assert = require('assert');
 const datatypes = require('../datatypes');
+
 describe('Parsing Data Types', () => {
   describe('AlphaNumeric', () => {
     it('parse_ST', () => {
@@ -17,7 +18,7 @@ describe('Parsing Data Types', () => {
       const parsed = datatypes.parse_FT('This is \\formated Data');
       assert.equal(parsed, 'This is \\formated Data');
     });
-    it('parse_FT - escape characters');
+    it('parse_FT -escape characters');
   });
 
   describe('Numerical', () => {
@@ -198,8 +199,42 @@ describe('Parsing Data Types', () => {
     });
     it('parse_XON', () => {
       const parsed = datatypes.parse_XON('HL7 Health Center^L^6^M11^HCFA');
-      const expected = {};
+      const expected = {
+        assigning_authority: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        assigning_facility_id: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        check_digit: '',
+        check_digit_scheme: 'HCFA',
+        id: 6,
+        identifier_type: '',
+        organization_name: 'HL7 Health Center',
+        organization_type: 'L'
+      };
+
+      assert.deepStrictEqual(parsed, expected, 'Could not parse XON');
     });
-    xit('parse_XTN');
+    it('parse_XTN', () => {
+      const parsed = datatypes.parse_XTN('(415)555-3210^ORN^FX^');
+      const expected = {
+        area_code: '',
+        country_code: '',
+        email: '',
+        extension: '',
+        number: '(415)555-3210',
+        phone_number: '',
+        telecommunication_code: 'ORN',
+        telecommunication_equipment_type: 'FX',
+        text: ''
+      };
+
+      assert.deepStrictEqual(parsed, expected, 'Could not parse XON');
+    });
   });
 });
