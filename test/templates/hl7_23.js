@@ -47,7 +47,26 @@ describe('Segments for Version 2.3', () => {
   xit('MFE');
   xit('MFI');
   xit('MRG');
-  xit('MSA');
+  it('MSA', () => {
+    const msa_parser = segments.builder(new segments.templates['2.3'].msa_template(), {});
+    const parsed = msa_parser('MSA|AA|Q952913316T1177454870X481568');
+    const expected = {
+      ack_code: 'AA',
+      delayed_ack_type: '',
+      error_condition: {
+        alternate_coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        coding_system: '',
+        identifier: '',
+        text: ''
+      },
+      expected_sequence_number: '',
+      message_control_id: 'Q952913316T1177454870X481568',
+      text: ''
+    };
+    assert.deepStrictEqual(parsed, expected, 'Could not parse MSA segment');
+  });
   it('MSH', () => {
     const msh_builder = segments.builder(new segments.templates['2.3'].msh_template(), {});
     const msh = 'MSH|^~&|LABxxx|ClinLAB|ICU||19910918060544||MFN^M03|MSGID002|P|2.2';
