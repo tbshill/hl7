@@ -322,6 +322,22 @@ const datatypes = {
     } else {
       return '';
     }
+  },
+  parse_EI: function parse_EI(data = '', level) {
+    // <entity identifier (ST)> ^ <namespace ID (IS)> ^ <universal ID (ST)> ^ <universal ID type (ID)>
+    const levelData = getLevel(level);
+    const delim = levelData.delim;
+    const sub_level = levelData.sub_level;
+
+    const components = data.split(delim);
+
+    let ret = {};
+
+    ret.identifier = this.parse_ST(components[0], sub_level);
+    ret.namespace_id = this.parse_IS(components[1], sub_level);
+    ret.universal_id = this.parse_ST(components[2], sub_level);
+    ret.universal_id_type = this.parse_ID(components[3], sub_level);
+    return ret;
   }
 };
 

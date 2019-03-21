@@ -88,7 +88,16 @@ describe('Parsing Data Types', () => {
 
       assert.deepStrictEqual(parsed, expected, 'could not parse HD');
     });
-    xit('parse_EI');
+    it('parse_EI', () => {
+      const parsed = datatypes.parse_EI('entity identifier^ID^univ ID^TP');
+      const expected = {
+        identifier: 'entity identifier',
+        namespace_id: 'ID',
+        universal_id: 'univ ID',
+        universal_id_type: 'TP'
+      };
+      assert.deepStrictEqual(parsed, expected, 'could not parse_EI');
+    });
     xit('parse_RP');
     xit('parse_PL');
     it('parse_PT', () => {

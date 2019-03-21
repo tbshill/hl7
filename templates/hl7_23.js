@@ -63,7 +63,7 @@ const templates = {
   },
   orc_template: function orc_template() {
     this.order_control = components => datatypes.parse_ID(components[1]);
-    this.placer_order_number = components => datatypes.parse_EI(components[2]); // TODO: build parse_EI
+    this.placer_order_number = components => datatypes.parse_EI(components[2]);
     this.filler_order_number = components => datatypes.parse_EI(components[3]);
     this.placer_group_number = components => datatypes.parse_EI(components[4]);
     this.order_status = components => datatypes.parse_ID(components[5]);
