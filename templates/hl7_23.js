@@ -13,8 +13,8 @@ const templates = {
       datatypes.parse_CM(components[8], data => {
         const components = data.split('^');
         let ret = {};
-        ret.type = datatypes.parse_ST(components[0] || '') || '';
-        ret.event = datatypes.parse_ST(components[1] || '') || '';
+        ret.type = datatypes.parse_ST(components[0]) || '';
+        ret.event = datatypes.parse_ST(components[1]) || '';
         return ret;
       });
     this.control_id = components => datatypes.parse_ST(components[9]);
@@ -26,7 +26,7 @@ const templates = {
     this.application_ack_type = components => datatypes.parse_ST(components[15]);
     this.country_code = components => datatypes.parse_ID(components[16]);
     this.character_set = components => datatypes.parse_ID(components[17]);
-    this.principle_language = components => datatypes.parse_CE(components[18] || '');
+    this.principle_language = components => datatypes.parse_CE(components[18]);
   },
 
   pid_template: function pid_template() {
@@ -115,7 +115,7 @@ const templates = {
     this.admitting_doctor = components => datatypes.parse_XCN(components[17]);
     this.patient_type = components => datatypes.parse_IS(components[18]);
     this.visit_number = components => datatypes.parse_CX(components[19]);
-    this.financial_class = components => datatypes.parse_FC(components[20]); // TODO: Build prase_FC
+    this.financial_class = components => datatypes.parse_FC(components[20]);
     this.charge_price_indicator = components => datatypes.parse_IS(components[21]);
     this.courtesy_code = components => datatypes.parse_IS(components[22]);
     this.credit_rating = components => datatypes.parse_IS(components[23]);

@@ -382,6 +382,18 @@ const datatypes = {
     ret.order_sequencing = components[9]; // not sure what (*) denotes in the standard
 
     return ret;
+  },
+  parse_FC: function parse_FC(data = '', level) {
+    const levelData = getLevel(level);
+    const delim = levelData.delim;
+    const sub_level = levelData.sub_level;
+
+    const components = data.split(delim);
+
+    let ret = {};
+    ret.id = this.parse_ID(components[0], sub_level);
+    ret.effective_date = this.parse_TS(components[1], sub_level);
+    return ret;
   }
 };
 
