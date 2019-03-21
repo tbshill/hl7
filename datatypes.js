@@ -20,7 +20,7 @@ function getLevel(level) {
 
 const datatypes = {
   parse_ST: function parse_ST(data, level) {
-    return data;
+    return data || '';
   },
   to_ST: function to_ST(data, level) {
     return data;
@@ -40,7 +40,7 @@ const datatypes = {
 
   // Numeric
   parse_NM: function parse_NM(data, level) {
-    return Number(data);
+    return Number(data) || '';
   },
   parse_MO: function parse_MO(data, level) {
     const levelData = getLevel(level);
@@ -62,8 +62,8 @@ const datatypes = {
 
     const components = data.split(delim);
     let ret = {};
-    ret.time = moment(components[0], 'YYYYMMDDHHmmssSSSZZ').toDate();
-    ret.precision = components[1];
+    ret.time = moment(components[0], 'YYYYMMDDHHmmssSSSZZ').toDate() || '';
+    ret.precision = components[1] || '';
     return ret;
   },
 
@@ -103,7 +103,7 @@ const datatypes = {
 
   // Identifiers
   parse_ID: function parse_ID(data, level) {
-    return this.parse_ST(data, level);
+    return this.parse_ST(data, level) || '';
   },
   parse_HD: function parse_HD(data, level) {
     //<namespace ID (IS)> ^ <universal ID (ST)> ^ <universal ID type (ID)>

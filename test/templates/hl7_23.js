@@ -1,4 +1,5 @@
 const assert = require('assert');
+const segments = require('../../segments');
 describe('Segments for Version 2.3', () => {
   xit('ACC');
   xit('ADD');
@@ -47,7 +48,51 @@ describe('Segments for Version 2.3', () => {
   xit('MFI');
   xit('MRG');
   xit('MSA');
-  xit('MSH');
+  it('MSH', () => {
+    console.log('');
+    console.log('');
+    console.log('');
+    const msh_builder = segments.builder(new segments.templates['2.3'].msh_template(), {});
+    const msh = 'MSH|^~&|LABxxx|ClinLAB|ICU||19910918060544||MFN^M03|MSGID002|P|2.2';
+    const parsed = msh_builder(msh);
+    const expected = {
+      sending_application: {
+        namespace_id: 'LABxxx',
+        universal_id: '',
+        universal_id_type: ''
+      },
+      sending_facility: {
+        namespace_id: 'ClinLAB',
+        universal_id: '',
+        universal_id_type: ''
+      },
+      recieving_application: { namespace_id: 'ICU', universal_id: '', universal_id_type: '' },
+      recieving_facility: { namespace_id: '', universal_id: '', universal_id_type: '' },
+      datetime: { time: new Date('1991-09-18T12:05:44.000Z'), precision: '' },
+      security: '',
+      message_type: { type: 'MFN', event: 'M03' },
+      control_id: 'MSGID002',
+      processing_id: { id: 'P', mode: '' },
+      version: '2.2',
+      sequence_number: '',
+      continuation_pointer: '',
+      accept_ack_type: '',
+      application_ack_type: '',
+      country_code: '',
+      character_set: '',
+      principle_language: {
+        identifier: '',
+        text: '',
+        coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        alternate_coding_system: ''
+      }
+    };
+
+    assert.deepStrictEqual(parsed, expected, 'Could not parse MSH segment');
+    console.log(parsed);
+  });
   xit('MK1');
   xit('NPU');
   xit('NTE');
