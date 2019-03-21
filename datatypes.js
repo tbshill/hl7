@@ -338,6 +338,50 @@ const datatypes = {
     ret.universal_id = this.parse_ST(components[2], sub_level);
     ret.universal_id_type = this.parse_ID(components[3], sub_level);
     return ret;
+  },
+  parse_PL: function parse_PL(data = '', level) {
+    //<point of care (IS )> ^ <room (IS )> ^ <bed (IS)> ^ <facility (HD)> ^ < location status (IS )> ^ <person location type (IS)> ^ <building (IS )> ^ <floor (IS )> ^ <location description (ST)>
+    const levelData = getLevel(level);
+    const delim = levelData.delim;
+    const sub_level = levelData.sub_level;
+
+    const components = data.split(delim);
+
+    let ret = {};
+    ret.point_of_care = this.parse_IS(components[0], sub_level);
+    ret.room = this.parse_IS(components[1], sub_level);
+    ret.bed = this.parse_IS(components[2], sub_level);
+    ret.facility = this.parse_HD(components[3], sub_level);
+    ret.location_status = this.parse_IS(components[4], sub_level);
+    ret.person_location_type = this.parse_IS(components[5], sub_level);
+    ret.building = this.parse_IS(components[6], sub_level);
+    ret.floor = this.parse_IS(components[7], sub_level);
+    ret.location_description = this.parse_ST(components[8], sub_level);
+
+    return ret;
+  },
+  prase_TQ: function parse_TQ(data = '', level) {
+    //<quantity (CQ)> ^ <interval (*)> ^ <duration (*)> ^ <start date/time (TS)> ^ <end date/time (TS)> ^ <priority (ID)> ^ <condition (ST)> ^ <text (TX)> ^ <conjunction (ID)> ^ <order sequencing (*)>
+
+    const levelData = getLevel(level);
+    const delim = levelData.delim;
+    const sub_level = levelData.sub_level;
+
+    const components = data.split(delim);
+
+    let ret = {};
+    ret.quantity = this.parse_CQ(components[0], sub_level);
+    ret.interval = components[1]; // not sure what (*) denotes in the standard //TODO: Find out what (*) means
+    ret.duration = components[2]; // not sure what(*) denotes in the standard
+    ret.start_time = this.parse_TS(components[3], sub_level);
+    ret.end_time = this.parse_TS(components[4], sub_level);
+    ret.priority = this.parse_ID(components[5], sub_level);
+    ret.condition = this.parse_ST(components[6], sub_level);
+    ret.text = this.parse_TX(components[7], sub_level);
+    ret.conjunction = this.parse_ID(components[8], sub_level);
+    ret.order_sequencing = components[9]; // not sure what (*) denotes in the standard
+
+    return ret;
   }
 };
 

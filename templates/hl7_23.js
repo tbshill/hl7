@@ -68,7 +68,7 @@ const templates = {
     this.placer_group_number = components => datatypes.parse_EI(components[4]);
     this.order_status = components => datatypes.parse_ID(components[5]);
     this.response_flag = components => datatypes.parse_ID(components[6]);
-    this.quanity_timing = components => datatypes.parse_TQ(components[7]); // TODO: build parse_TQ
+    this.quanity_timing = components => datatypes.parse_TQ(components[7]);
     this.parent = components => datatypes.parse_CM(components[8]);
     this.transaction_date = components => datatypes.parse_TS(components[9]);
     this.entered_by = components => datatypes.parse_XCN(components[10]);
@@ -98,7 +98,7 @@ const templates = {
   pv1_template: function pv1_template() {
     this.set_id = components => datatypes.parse_SI(components[1]);
     this.patient_class = components => datatypes.parse_IS(components[2]);
-    this.assigned_location = components => datatypes.parse_PL(components[3]); // TODO: Build parse_PL
+    this.assigned_location = components => datatypes.parse_PL(components[3]);
     this.admission_type = components => datatypes.parse_IS(components[4]);
     this.preadmit_number = components => datatypes.parse_CX(components[5]);
     this.prior_location = components => datatypes.parse_PL(components[6]);
