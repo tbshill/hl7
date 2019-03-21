@@ -197,7 +197,7 @@ const datatypes = {
     ret.other_geograpic = this.parse_ST(components[7], sub_level) || '';
     ret.county = this.parse_IS(components[8], sub_level) || '';
     ret.census_tract = this.parse_IS(components[9], sub_level) || '';
-    // console.log(ret);
+
     return ret;
   },
   parse_XPN: function parse_XPN(data, level) {

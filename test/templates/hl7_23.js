@@ -49,9 +49,6 @@ describe('Segments for Version 2.3', () => {
   xit('MRG');
   xit('MSA');
   it('MSH', () => {
-    console.log('');
-    console.log('');
-    console.log('');
     const msh_builder = segments.builder(new segments.templates['2.3'].msh_template(), {});
     const msh = 'MSH|^~&|LABxxx|ClinLAB|ICU||19910918060544||MFN^M03|MSGID002|P|2.2';
     const parsed = msh_builder(msh);
@@ -91,7 +88,6 @@ describe('Segments for Version 2.3', () => {
     };
 
     assert.deepStrictEqual(parsed, expected, 'Could not parse MSH segment');
-    console.log(parsed);
   });
   xit('MK1');
   xit('NPU');
