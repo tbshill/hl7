@@ -375,6 +375,33 @@ const templates = {
       datatypes.parse_XON(components[70]);
     this.race = components => datatypes.parse_IS(components[71]);
     this.patient_relationship_to_insured = components => datatypes.parse_ID(components[72]);
+  },
+  in3_template: function in3_template() {
+    this.set_id = components => datatypes.parse_SI(components[1]);
+    this.certification_number = components => datatypes.parse_CX(components[2]);
+    this.certified_by = components => datatypes.parse_XCN(components[3]);
+    this.certification_required = components => datatypes.parse_ID(components[4]);
+    this.penalty = components => datatypes.parse_CM(components[5]);
+    this.certification_time = components => datatypes.parse_TS(components[6]);
+    this.certification_modified = components => datatypes.parse_TS(components[7]);
+    this.operator = components => datatypes.parse_XCN(components[8]);
+    this.certificaiton_begin_date = components => datatypes.parse_DT(components[9]);
+    this.certification_end_date = components => datatypes.parse_DT(components[10]);
+    this.days = components => datatypes.parse_CM(components[11]);
+    this.nonconcur_code = components => datatypes.parse_CE(components[12]);
+    this.nonconcur_effective_time = components => datatypes.parse_TS(components[13]);
+    this.physician_reviewer = components => datatypes.parse_XCN(components[14]);
+    this.certification_contact = components => datatypes.parse_ST(components[15]);
+    this.certificaiton_contact_phone = components => datatypes.parse_XTN(components[16]);
+    this.appeal_reason = components => datatypes.parse_CE(components[17]);
+    this.certification_agency = components => datatypes.parse_CE(components[18]);
+    this.certification_agency_phone = components => datatypes.parse_XTN(components[19]);
+    this.precertification_required = components => datatypes.parse_CM(components[20]);
+    this.case_manager = components => datatypes.parse_ST(components[21]);
+    this.second_opinion_date = components => datatypes.parse_DT(components[22]);
+    this.second_opinion_status = components => datatypes.parse_IS(components[23]);
+    this.second_opinion_documentation_recieved = components => datatypes.parse_IS(components[24]);
+    this.second_opinion_physician = components => datatypes.parse_XCN(components[25]);
   }
 };
 
