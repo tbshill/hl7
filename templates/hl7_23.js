@@ -467,6 +467,27 @@ const templates = {
     this.sensitivity = components => datatypes.parse_IS(components[4]);
     this.reaction = components => datatypes.parse_ST(components[5]);
     this.identification_date = components => datatypes.parse_DT(components[6]);
+  },
+  dg1_template: function dg1_template() {
+    this.set_id = components => datatypes.parse_SI(components[1]);
+    this.diagnosis_coding_method = components => datatypes.parse_ID(components[2]);
+    this.diagnosis_code = components => datatypes.parse_CE(components[3]);
+    this.diagnosis_description = components => datatypes.parse_ST(components[4]);
+    this.diagnosis_time = components => datatypes.parse_TS(components[5]);
+    this.diagnosis_type = components => datatypes.parse_IS(components[6]);
+    this.major_diagnostic_category = components => datatypes.parse_CE(components[7]);
+    this.diagnostic_related_group = components => datatypes.parse_CE(components[8]);
+    this.drg_approval_indicator = components => datatypes.parse_ID(components[8]); // TODO: Learn what DRG stands for
+    this.drg_grouper_review_code = components => datatypes.parse_(components[9]);
+    this.outlier_type = components => datatypes.parse_CE(components[10]);
+    this.outlier_days = components => datatypes.parse_NM(components[11]);
+    this.outlier_cost = components => datatypes.parse_CP(components[12]);
+    this.grouper_version_and_type = components => datatypes.parse_ST(components[13]);
+    this.diagnosis_priority = components => datatypes.parse_NM(components[14]);
+    this.diagnosing_clinician = components => datatypes.parse_XCN(components[15]);
+    this.diagnosis_classification = components => datatypes.parse_IS(components[16]);
+    this.confidential_indicator = components => datatypes.parse_ID(components[17]);
+    this.attestation_time = components => datatypes.parse_TS(components[18]);
   }
 };
 
