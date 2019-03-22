@@ -488,6 +488,11 @@ const templates = {
     this.diagnosis_classification = components => datatypes.parse_IS(components[16]);
     this.confidential_indicator = components => datatypes.parse_ID(components[17]);
     this.attestation_time = components => datatypes.parse_TS(components[18]);
+  },
+  cti_template: function cti_template() {
+    this.sponsor_study_id = components => datatypes.parse_EI(components[1]);
+    this.study_phase_identifier = components => datatypes.parse_CE(components[2]);
+    this.study_scheduled_time_point = components => datatypes.parse_CE(components[3]);
   }
 };
 
