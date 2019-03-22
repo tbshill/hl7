@@ -69,7 +69,7 @@ const templates = {
     this.order_status = components => datatypes.parse_ID(components[5]);
     this.response_flag = components => datatypes.parse_ID(components[6]);
     this.quanity_timing = components => datatypes.parse_TQ(components[7]);
-    this.parent = components => datatypes.parse_CM(components[8]);
+    this.parent = components => datatypes.parse_CM(components[8]); // TODO: BUILD CM Callback // TODO: BUILD CM Callback
     this.transaction_date = components => datatypes.parse_TS(components[9]);
     this.entered_by = components => datatypes.parse_XCN(components[10]);
     this.verified_by = components => datatypes.parse_XCN(components[11]);
@@ -132,7 +132,7 @@ const templates = {
     this.delete_account_indicator = components => datatypes.parse_IS(components[34]);
     this.delete_account_date = components => datatypes.parse_DT(components[35]);
     this.discharge_disposition = components => datatypes.parse_IS(components[36]);
-    this.discharged_to = components => datatypes.parse_CM(components[37]);
+    this.discharged_to = components => datatypes.parse_CM(components[37]); // TODO: BUILD CM Callback // TODO: BUILD CM Callback
     this.diet_type = components => datatypes.parse_IS(components[38]);
     this.servicing_facility = components => datatypes.parse_IS(components[39]);
     this.bed_status = components => datatypes.parse_IS(components[40]);
@@ -200,7 +200,7 @@ const templates = {
     this.danger_code = components => datatypes.parse_CE(components[12]);
     this.relevant_clinical_info = components => datatypes.parse_ST(components[13]);
     this.specimen_recieved_time = components => datatypes.parse_TS(components[14]);
-    this.specimen_source = components => datatypes.parse_CM(components[15]);
+    this.specimen_source = components => datatypes.parse_CM(components[15]); // TODO: BUILD CM Callback
     this.ordering_provider = components => datatypes.parse_XCN(components[16]);
     this.order_callback_phone_number = components => datatypes.parse_XTN(components[17]);
     this.placer_feild1 = components => datatypes.parse_ST(components[18]);
@@ -208,19 +208,19 @@ const templates = {
     this.filler_feild1 = components => datatypes.parse_ST(components[20]);
     this.filler_feild2 = components => datatypes.parse_ST(components[21]);
     this.results_change_time = components => datatypes.parse_TS(components[22]);
-    this.charge_to_practice = components => datatypes.parse_CM(components[23]);
+    this.charge_to_practice = components => datatypes.parse_CM(components[23]); // TODO: BUILD CM Callback
     this.diagnostic_service_section_id = components => datatypes.parse_ID(components[24]);
     this.result_status = components => datatypes.parse_ID(components[25]);
-    this.parent_result = components => datatypes.parse_CM(components[26]);
+    this.parent_result = components => datatypes.parse_CM(components[26]); // TODO: BUILD CM Callback
     this.quantity_timing = components => datatypes.parse_TQ(components[27]);
     this.result_copies_top = components => datatypes.parse_XCN(components[28]);
-    this.parent = components => datatypes.parse_CM(components[29]);
+    this.parent = components => datatypes.parse_CM(components[29]); // TODO: BUILD CM Callback
     this.transporation_mode = components => datatypes.parse_ID(components[30]);
     this.reason_for_study = components => datatypes.parse_CE(components[31]);
-    this.principal_result_interpreter = components => datatypes.parse_CM(components[32]);
-    this.assistant_result_interpreter = components => datatypes.parse_CM(components[33]);
+    this.principal_result_interpreter = components => datatypes.parse_CM(components[32]); // TODO: BUILD CM Callback
+    this.assistant_result_interpreter = components => datatypes.parse_CM(components[33]); // TODO: BUILD CM Callback
     this.technician = components => datatypes.parse_CsM(components[34]);
-    this.transcriptionist = components => datatypes.parse_CM(components[35]);
+    this.transcriptionist = components => datatypes.parse_CM(components[35]); // TODO: BUILD CM Callback
     this.scheduled_time = components => datatypes.parse_TS(components[36]);
     this.number_of_sample_containers = components => datatypes.parse_NM(components[37]);
     this.transport_logistics_of_sample = components => datatypes.parse_CE(components[38]);
@@ -263,7 +263,7 @@ const templates = {
     this.insured_group_emp_name = components => datatypes.parse_XON(components[11]);
     this.plan_effective_date = components => datatypes.parse_DT(components[12]);
     this.plan_expiration_date = components => datatypes.parse_DT(components[13]);
-    this.authorization_information = components => datatypes.parse_CM(components[14]);
+    this.authorization_information = components => datatypes.parse_CM(components[14]); // TODO: BUILD CM Callback
     this.plan_type = components => datatypes.parse_IS(components[15]);
     this.name_of_issued = components => datatypes.parse_XPN(components[16]);
     this.insured_replationship_to_patient = components => datatypes.parse_CE(components[17]);
@@ -328,9 +328,9 @@ const templates = {
     this.payor_id = components => datatypes.parse_CX(components[25]);
     this.payor_subscriber_id = components => datatypes.parse_CX(components[26]);
     this.eligibility_source = components => datatypes.parse_IS(components[27]);
-    this.room_coverage_type_amount = components => datatypes.parse_CM(components[28]);
-    this.policy_type_amount = components => datatypes.parse_CM(components[29]);
-    this.daily_deductible = components => datatypes.parse_CM(components[30]);
+    this.room_coverage_type_amount = components => datatypes.parse_CM(components[28]); // TODO: BUILD CM Callback
+    this.policy_type_amount = components => datatypes.parse_CM(components[29]); // TODO: BUILD CM Callback
+    this.daily_deductible = components => datatypes.parse_CM(components[30]); // TODO: BUILD CM Callback
     this.living_dependency = components => datatypes.parse_IS(components[31]);
     this.ambulatory_status = components => datatypes.parse_IS(components[32]);
     this.citizenship = components => datatypes.parse_IS(components[33]);
@@ -381,13 +381,13 @@ const templates = {
     this.certification_number = components => datatypes.parse_CX(components[2]);
     this.certified_by = components => datatypes.parse_XCN(components[3]);
     this.certification_required = components => datatypes.parse_ID(components[4]);
-    this.penalty = components => datatypes.parse_CM(components[5]);
+    this.penalty = components => datatypes.parse_CM(components[5]); // TODO: BUILD CM Callback
     this.certification_time = components => datatypes.parse_TS(components[6]);
     this.certification_modified = components => datatypes.parse_TS(components[7]);
     this.operator = components => datatypes.parse_XCN(components[8]);
     this.certificaiton_begin_date = components => datatypes.parse_DT(components[9]);
     this.certification_end_date = components => datatypes.parse_DT(components[10]);
-    this.days = components => datatypes.parse_CM(components[11]);
+    this.days = components => datatypes.parse_CM(components[11]); // TODO: BUILD CM Callback
     this.nonconcur_code = components => datatypes.parse_CE(components[12]);
     this.nonconcur_effective_time = components => datatypes.parse_TS(components[13]);
     this.physician_reviewer = components => datatypes.parse_XCN(components[14]);
@@ -396,7 +396,7 @@ const templates = {
     this.appeal_reason = components => datatypes.parse_CE(components[17]);
     this.certification_agency = components => datatypes.parse_CE(components[18]);
     this.certification_agency_phone = components => datatypes.parse_XTN(components[19]);
-    this.precertification_required = components => datatypes.parse_CM(components[20]);
+    this.precertification_required = components => datatypes.parse_CM(components[20]); // TODO: BUILD CM Callback
     this.case_manager = components => datatypes.parse_ST(components[21]);
     this.second_opinion_date = components => datatypes.parse_DT(components[22]);
     this.second_opinion_status = components => datatypes.parse_IS(components[23]);
@@ -493,6 +493,25 @@ const templates = {
     this.sponsor_study_id = components => datatypes.parse_EI(components[1]);
     this.study_phase_identifier = components => datatypes.parse_CE(components[2]);
     this.study_scheduled_time_point = components => datatypes.parse_CE(components[3]);
+  },
+  blg_template: function blg_template() {
+    this.when_to_charge = components => datatypes.parse_CM(components[1]); // TODO: BUILD CM Callback
+    this.charge_type = components => datatypes.parse_ID(components[2]);
+    this.account_id = components => datatypes.parse_CK(components[3]);
+  },
+  pd1_template: function pd1_template() {
+    this.living_dependency = components => datatypes.parse_IS(components[1]);
+    this.living_arrangement = components => datatypes.parse_IS(components[2]);
+    this.patient_primary_facility = components => datatypes.parse_XON(components[3]);
+    this.patient_primary_care_provider = components => datatypes.parse_XCN(components[4]);
+    this.student_indicator = components => datatypes.parse_IS(components[5]);
+    this.handicap = components => datatypes.parse_IS(components[6]);
+    this.living_will = components => datatypes.parse_IS(components[7]);
+    this.organ_donor = components => datatypes.parse_IS(components[8]);
+    this.separate_bill = components => datatypes.parse_ID(components[9]);
+    this.diplicate_patient = components => datatypes.parse_CX(components[10]);
+    this.publicity_indicator = components => datatypes.parse_CE(components[11]);
+    this.protection_indicator = components => datatypes.parse_ID(components[12]);
   }
 };
 
