@@ -219,7 +219,7 @@ const templates = {
     this.reason_for_study = components => datatypes.parse_CE(components[31]);
     this.principal_result_interpreter = components => datatypes.parse_CM(components[32]);
     this.assistant_result_interpreter = components => datatypes.parse_CM(components[33]);
-    this.technician = components => datatypes.parse_CM(components[34]);
+    this.technician = components => datatypes.parse_CsM(components[34]);
     this.transcriptionist = components => datatypes.parse_CM(components[35]);
     this.scheduled_time = components => datatypes.parse_TS(components[36]);
     this.number_of_sample_containers = components => datatypes.parse_NM(components[37]);
@@ -248,6 +248,57 @@ const templates = {
     this.producers_id = components => datatypes.parse_CE(components[15]);
     this.responsible_observer = components => datatypes.parse_XCN(components[16]);
     this.observation_method = components => datatypes.parse_CE(components[17]);
+  },
+  in1_template: function in1_template() {
+    this.set_id = components => datatypes.parse_SI(components[1]);
+    this.insurance_plan_id = components => datatypes.parse_CE(components[2]);
+    this.insurance_company_id = components => datatypes.parse_CX(components[3]);
+    this.insurance_company_name = components => datatypes.parse_XON(components[4]);
+    this.insurance_company_address = components => datatypes.parse_XAD(components[5]);
+    this.insurance_company_contact = components => datatypes.parse_XPN(components[6]);
+    this.insurance_company_phone = components => datatypes.parse_XTN(components[7]);
+    this.group_number = components => datatypes.parse_ST(components[8]);
+    this.group_name = components => datatypes.parse_XON(components[9]);
+    this.insured_group_emp_id = components => datatypes.parse_CX(components[10]);
+    this.insured_group_emp_name = components => datatypes.parse_XON(components[11]);
+    this.plan_effective_date = components => datatypes.parse_DT(components[12]);
+    this.plan_expiration_date = components => datatypes.parse_DT(components[13]);
+    this.authorization_information = components => datatypes.parse_CM(components[14]);
+    this.plan_type = components => datatypes.parse_IS(components[15]);
+    this.name_of_issued = components => datatypes.parse_XPN(components[16]);
+    this.insured_replationship_to_patient = components => datatypes.parse_CE(components[17]);
+    this.insured_dob = components => datatypes.parse_TS(components[18]);
+    this.insured_address = components => datatypes.parse_XAD(components[19]);
+    this.assignment_of_benefits = components => datatypes.parse_IS(components[20]);
+    this.coordination_of_benefits = components => datatypes.parse_IS(components[21]);
+    this.coordination_of_benefits_priority = components => datatypes.parse_ST(components[22]);
+    this.notice_of_admission_flag = components => datatypes.parse_ID(components[23]);
+    this.notice_of_admission_date = components => datatypes.parse_DT(components[24]);
+    this.report_of_eligibility_flag = components => datatypes.parse_IS(components[25]);
+    this.report_of_eligibility_date = components => datatypes.parse_DT(components[26]);
+    this.release_information_code = components => datatypes.parse_IS(components[27]);
+    this.pac = components => datatypes.parse_ST(components[28]);
+    this.verification_time = components => datatypes.parse_tS(components[29]);
+    this.verification_by = components => datatypes.parse_XCN(components[30]);
+    this.type_of_agreement_code = components => datatypes.parse_IS(components[31]);
+    this.billing_status = components => datatypes.parse_IS(components[32]);
+    this.lifetime_reserve_days = components => datatypes.parse_NM(components[33]);
+    this.delay_before_lifetime_reserve_day = components => datatypes.parse_NM(components[34]);
+    this.company_plan_code = components => datatypes.parse_IS(components[35]);
+    this.policy_number = components => datatypes.parse_ST(components[36]);
+    this.policy_deductible = components => datatypes.parse_CP(components[37]);
+    this.policy_limit_amount = components => datatypes.parse_CP(components[38]);
+    this.policy_limit_days = components => datatypes.parse_NM(components[39]);
+    this.room_rate_semiprivate = components => datatypes.parse_CP(components[40]);
+    this.room_rate_private = components => datatypes.parse_CP(components[41]);
+    this.insured_employment_status = components => datatypes.parse_CE(components[42]);
+    this.insured_sex = components => datatypes.parse_IS(components[43]);
+    this.insured_employer_address = components => datatypes.parse_XAD(components[44]);
+    this.verification_status = components => datatypes.parse_ST(components[45]);
+    this.prior_insurance_plan_id = components => datatypes.parse_IS(components[46]);
+    this.coverage_type = components => datatypes.parse_IS(components[47]);
+    this.handicap = components => datatypes.parse_IS(components[48]);
+    this.insureds_id_number = components => datatypes.parse_CX(components[49]);
   }
 };
 
