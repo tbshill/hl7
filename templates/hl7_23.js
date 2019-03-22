@@ -69,7 +69,7 @@ const templates = {
     this.order_status = components => datatypes.parse_ID(components[5]);
     this.response_flag = components => datatypes.parse_ID(components[6]);
     this.quanity_timing = components => datatypes.parse_TQ(components[7]);
-    this.parent = components => datatypes.parse_CM(components[8]); // TODO: BUILD CM Callback // TODO: BUILD CM Callback
+    this.parent = components => datatypes.parse_CM(components[8]); // TODO: BUILD CM Callback
     this.transaction_date = components => datatypes.parse_TS(components[9]);
     this.entered_by = components => datatypes.parse_XCN(components[10]);
     this.verified_by = components => datatypes.parse_XCN(components[11]);
@@ -132,7 +132,7 @@ const templates = {
     this.delete_account_indicator = components => datatypes.parse_IS(components[34]);
     this.delete_account_date = components => datatypes.parse_DT(components[35]);
     this.discharge_disposition = components => datatypes.parse_IS(components[36]);
-    this.discharged_to = components => datatypes.parse_CM(components[37]); // TODO: BUILD CM Callback // TODO: BUILD CM Callback
+    this.discharged_to = components => datatypes.parse_CM(components[37]); // TODO: BUILD CM Callback
     this.diet_type = components => datatypes.parse_IS(components[38]);
     this.servicing_facility = components => datatypes.parse_IS(components[39]);
     this.bed_status = components => datatypes.parse_IS(components[40]);
