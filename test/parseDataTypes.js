@@ -138,7 +138,36 @@ describe('Parsing Data Types', () => {
     xit('parse_CK');
     xit('parse_CN');
     xit('parse_CX');
-    xit('parse_XCN');
+    it('parse_XCN', () => {
+      const xcn = '|1234567^Smith^John^J^III^DR^PHD^ADT01^^L^4^M11^MR|';
+      const parsed = datatypes.parse_XCN(xcn);
+      const expected = {
+        assigning_authority: {
+          namespace_id: 'ADT01',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        assigning_facility: {
+          namespace_id: 'MR|',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        components: '|1234567',
+        degree: 'DR',
+        family_name: 'Smith',
+        given_name: 'John',
+        id_of_checkdigit_scheme: '4',
+        identifier_check_digit: 'L',
+        identifier_code: 'M11',
+        middle_name: 'J',
+        name_type_code: '',
+        prefix: 'III',
+        source_table: 'PHD',
+        suffix: 'J'
+      };
+
+      assert.deepStrictEqual(parsed, expected, 'Could not parse XCN');
+    });
   });
 
   describe('Demographics', () => {

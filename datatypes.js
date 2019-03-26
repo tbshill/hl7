@@ -394,6 +394,39 @@ const datatypes = {
     ret.id = this.parse_ID(components[0], sub_level);
     ret.effective_date = this.parse_TS(components[1], sub_level);
     return ret;
+  },
+  parse_XCN: function parse_XCN(data = '', level) {
+    //Components: <ID number (ST)> ^ <family name (ST)> ^ <given name (ST)> ^ <middle initial or name (ST)> ^ <suffix (e.g., JR or III) (ST)> ^
+    // <prefix (e.g., DR) (ST)> ^ <degree (e.g., MD) (ST)> ^ <source table (IS)> ^ <assigning authority (HD)> ^ <name type code(ID)> ^
+    // <identifier check digit (ST)> ^ <code identifying the check digit scheme employed (ID )> ^ <identifier type code (IS)> ^
+    // <assigning facility (HD)>
+
+    // Subcomponents of assigning authority: <namespace ID (IS) > & <universal ID (ST) > & <universal ID type (ID) >
+    // Subcomponents of assigning facility: <namespace ID (IS) > & <universal ID (ST) > & <universal ID type (ID) >
+    const levelData = getLevel(level);
+    const delim = levelData.delim;
+    const sub_level = levelData.sub_level;
+
+    const components = data.split(delim);
+
+    let ret = {};
+
+    ret.components = this.parse_ID(components[0], sub_level);
+    ret.family_name = this.parse_ST(components[1], sub_level);
+    ret.given_name = this.parse_ST(components[2], sub_level);
+    ret.middle_name = this.parse_ST(components[3], sub_level);
+    ret.suffix = this.parse_ST(components[3], sub_level);
+    ret.prefix = this.parse_ST(components[4], sub_level);
+    ret.degree = this.parse_ST(components[5], sub_level);
+    ret.source_table = this.parse_IS(components[6], sub_level);
+    ret.assigning_authority = this.parse_HD(components[7], sub_level);
+    ret.name_type_code = this.parse_ID(components[8], sub_level);
+    ret.identifier_check_digit = this.parse_ST(components[9], sub_level);
+    ret.id_of_checkdigit_scheme = this.parse_ID(components[10], sub_level);
+    ret.identifier_code = this.parse_IS(components[11], sub_level);
+    ret.assigning_facility = this.parse_HD(components[12], sub_level);
+
+    return ret;
   }
 };
 

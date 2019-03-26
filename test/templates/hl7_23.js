@@ -134,7 +134,103 @@ describe('Segments for Version 2.3', () => {
   xit('OM6');
   xit('ORC');
   xit('PCR');
-  xit('PD1');
+  it('PD1', () => {
+    const pd1 =
+      'PID|||PATID1234^5^M11||JONES^WILLIAM^A^III||19610615|M-||C|1200 N ELMSTREET^^GREENSBORO^NC^27401-1020|GL|(91-9)379-1212|(919)271-3434||S||PATID12345001^2^M10|123456789|9-87654^NC';
+    const pd1_parser = segments.builder(new segments.templates['2.3'].pd1_template(), {});
+    const parsed = pd1_parser(pd1);
+    console.log(parsed);
+    let expected = {
+      diplicate_patient: {
+        assigning_authority: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        assigning_facility: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        check_digit: '',
+        check_digit_schema_code: '',
+        id: 'C',
+        identifier_code: ''
+      },
+      handicap: '',
+      living_arrangement: '',
+      living_dependency: '',
+      living_will: '19610615',
+      organ_donor: 'M-',
+      patient_primary_care_provider: {
+        assigning_authority: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        assigning_facility: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        components: '',
+        degree: '',
+        family_name: '',
+        given_name: '',
+        id_of_checkdigit_scheme: '',
+        identifier_check_digit: '',
+        identifier_code: '',
+        middle_name: '',
+        name_type_code: '',
+        prefix: '',
+        source_table: '',
+        suffix: ''
+      },
+      patient_primary_facility: {
+        assigning_authority: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        assigning_facility_id: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        check_digit: '',
+        check_digit_scheme: '',
+        id: '',
+        identifier_type: '',
+        organization_name: 'PATID1234',
+        organization_type: '5'
+      },
+      protection_indicator: 'GL',
+      publicity_indicator: {
+        alternate_coding_system: '',
+        alternate_id: 'NC',
+        alternate_text: '27401-1020',
+        coding_system: 'GREENSBORO',
+        identifier: '1200 N ELMSTREET',
+        text: ''
+      },
+      separate_bill: '',
+      student_indicator: 'JONES^WILLIAM^A^III'
+    };
+    // expected.living_dependency =
+    // expected.living_arrangement =
+    // expected.patient_primary_facility =
+    // expected.patient_primary_care_provider =
+    // expected.student_indicator =
+    // expected.handicap =
+    // expected.living_will =
+    // expected.organ_donor =
+    // expected.separate_bill =
+    // expected.diplicate_patient =
+    // expected.publicity_indicator =
+    // expected.protection_indicator =
+
+    assert.deepStrictEqual(parsed, expected, 'Could not parse PD1');
+  });
   xit('PDC');
   xit('PEO');
   xit('PES');
