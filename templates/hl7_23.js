@@ -231,7 +231,7 @@ const templates = {
     this.planned_patient_transport_comment = components => datatypes.parse_CE(components[43]);
   },
   obx_template: function obx_template() {
-    this.set_id = components => datatypes.parse_SI(components[16]);
+    this.set_id = components => datatypes.parse_SI(components[1]);
     this.value_type = components => datatypes.parse_ID(components[2]);
     this.observation_identifier = components => datatypes.parse_CE(components[3]);
     this.observation_sub_id = components => datatypes.parse_ST(components[4]);

@@ -123,7 +123,88 @@ describe('Segments for Version 2.3', () => {
     assert.deepStrictEqual(parsed, expected, 'Could not parse NTE');
   });
   xit('OBR');
-  xit('OBX');
+  it('OBX', () => {
+    const obx = 'OBX|2|CE|001719^HIV-1 ABS, SEMI-QN^L||HTN|||||N|F|19910123|| 19980729155700|BN';
+    const obx_parser = segments.builder(new segments.templates['2.3'].obx_template(), {});
+    const parsed = obx_parser(obx);
+    const expected = {
+      abnormal_flags: '',
+      date_last_observed_normal_values: {
+        precision: '',
+        time: new Date('1991-01-23T07:00:00.000Z')
+      },
+      nature_of_abnormal_test: 'N',
+      observation_identifier: {
+        alternate_coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        coding_system: 'L',
+        identifier: '001719',
+        text: 'HIV-1 ABS, SEMI-QN'
+      },
+      observation_method: {
+        alternate_coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        coding_system: '',
+        identifier: '',
+        text: ''
+      },
+      observation_result_status: 'F',
+      observation_sub_id: '',
+      observation_value: 'HTN',
+      probability: '',
+      producers_id: {
+        alternate_coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        coding_system: '',
+        identifier: 'BN',
+        text: ''
+      },
+      references_range: '',
+      responsible_observer: {
+        assigning_authority: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        assigning_facility: {
+          namespace_id: '',
+          universal_id: '',
+          universal_id_type: ''
+        },
+        components: '',
+        degree: '',
+        family_name: '',
+        given_name: '',
+        id_of_checkdigit_scheme: '',
+        identifier_check_digit: '',
+        identifier_code: '',
+        middle_name: '',
+        name_type_code: '',
+        prefix: '',
+        source_table: '',
+        suffix: ''
+      },
+      set_id: 2,
+      time_of_observation: {
+        precision: '',
+        time: new Date('1998-07-29T21:57:00.000Z')
+      },
+      units: {
+        alternate_coding_system: '',
+        alternate_id: '',
+        alternate_text: '',
+        coding_system: '',
+        identifier: '',
+        text: ''
+      },
+      user_defined_access_checks: '',
+      value_type: 'CE'
+    };
+    assert.deepStrictEqual(parsed, expected, 'Could not parse NTE');
+  });
   xit('ODS');
   xit('ODT');
   xit('OM1');
@@ -139,7 +220,7 @@ describe('Segments for Version 2.3', () => {
       'PID|||PATID1234^5^M11||JONES^WILLIAM^A^III||19610615|M-||C|1200 N ELMSTREET^^GREENSBORO^NC^27401-1020|GL|(91-9)379-1212|(919)271-3434||S||PATID12345001^2^M10|123456789|9-87654^NC';
     const pd1_parser = segments.builder(new segments.templates['2.3'].pd1_template(), {});
     const parsed = pd1_parser(pd1);
-    console.log(parsed);
+    // console.log(parsed);
     let expected = {
       diplicate_patient: {
         assigning_authority: {
