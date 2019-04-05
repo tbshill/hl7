@@ -25,7 +25,7 @@ function builder(template, parser_adjustments = {}) {
 
 module.exports = {
   templates: {
-    '2.3': require('./templates/hl7_23'),
+    '2.3': require('./templates/hl7_23.segments'),
     '2.3.1': () => console.log('Not Implemented')
   },
   builder: builder
