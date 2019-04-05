@@ -10,12 +10,6 @@ const in1_parser = segments.builder(new segments.templates['2.3'].in1_template()
 const orc_parser = segments.builder(new segments.templates['2.3'].orc_template());
 const obr_parser = segments.builder(new segments.templates['2.3'].obr_template());
 
-const hl7_string = fs
-  .readFileSync('/Users/it/Development/KawaFlows/Libraries/hl7/test/testHL7/ORM.hl7')
-  .toString();
-
-const $segments = hl7_string.split('\n');
-
 const removeEmpty = obj => {
   Object.entries(obj).forEach(([key, val]) => {
     if (val && typeof val === 'object') {
@@ -34,40 +28,48 @@ const removeEmpty = obj => {
   return obj;
 };
 
-describe('Parse ORM', () => {
-  it('Run:', () => {
-    let message_json = {};
+function parseORM() {
+  const hl7_string = fs
+    .readFileSync('/Users/it/Development/KawaFlows/Libraries/hl7/test/testHL7/ORM.hl7')
+    .toString();
+  const $segments = hl7_string.split('\n');
 
-    for (let segment of $segments) {
-      const segment_type = segment.substr(0, 3);
-      switch (segment_type) {
-        case 'MSH':
-          message_json.header = msh_parser(segment);
-          break;
-        case 'PID':
-          message_json.patient = pid_parser(segment);
-          break;
-        case 'PV1':
-          message_json.visit = pv1_parser(segment);
-          break;
-        case 'GT1':
-          message_json.garentor = gt1_parser(segment);
-          break;
-        case 'IN1':
-          message_json.insurance = in1_parser(segment);
-          break;
-        case 'ORC':
-          message_json.order_control = orc_parser(segment);
-          break;
-        case 'OBR':
-          message_json.observation = obr_parser(segment);
-        default:
-          break;
-      }
+  let message_json = {};
+
+  for (let segment of $segments) {
+    const segment_type = segment.substr(0, 3);
+    switch (segment_type) {
+      case 'MSH':
+        message_json.header = msh_parser(segment);
+        break;
+      case 'PID':
+        message_json.patient = pid_parser(segment);
+        break;
+      case 'PV1':
+        message_json.visit = pv1_parser(segment);
+        break;
+      case 'GT1':
+        message_json.garentor = gt1_parser(segment);
+        break;
+      case 'IN1':
+        message_json.insurance = in1_parser(segment);
+        break;
+      case 'ORC':
+        message_json.order_control = orc_parser(segment);
+        break;
+      case 'OBR':
+        message_json.observation = obr_parser(segment);
+      default:
+        break;
     }
+  }
 
-    message_json = removeEmpty(message_json);
-    console.log(message_json);
-    console.log('\n\n\n\n');
+  message_json = removeEmpty(message_json);
+  return message_json;
+}
+
+describe('Parse ORM', () => {
+  it('Should nievely parse an ORM', () => {
+    parseORM();
   });
 });
