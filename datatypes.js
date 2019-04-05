@@ -39,7 +39,7 @@ const datatypes = {
   to_FT: function to_FT(data = '', level) {
     return data;
   },
-
+//what does this do?
   // Numeric
   parse_NM: function parse_NM(data = '', level) {
     return Number(data) || '';
@@ -55,7 +55,7 @@ const datatypes = {
     ret.denomination = this.parse_ID(components[1], sub_level) || '';
     return ret;
   },
-
+//help needed here
   // Date/Time
   parse_TS: function parse_TS(data = '', level) {
     const levelData = getLevel(level);
