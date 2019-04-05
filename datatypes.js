@@ -14,8 +14,6 @@ function getLevel(level) {
     default:
       break;
   }
-  //hey man this is going to be baller
-  
 
   return { delim: delim, sub_level: sub_level };
 }
@@ -39,7 +37,7 @@ const datatypes = {
   to_FT: function to_FT(data = '', level) {
     return data;
   },
-//what does this do?
+  //what does this do?
   // Numeric
   parse_NM: function parse_NM(data = '', level) {
     return Number(data) || '';
@@ -55,7 +53,6 @@ const datatypes = {
     ret.denomination = this.parse_ID(components[1], sub_level) || '';
     return ret;
   },
-//help needed here
   // Date/Time
   parse_TS: function parse_TS(data = '', level) {
     const levelData = getLevel(level);
@@ -428,6 +425,61 @@ const datatypes = {
     ret.identifier_code = this.parse_IS(components[11], sub_level);
     ret.assigning_facility = this.parse_HD(components[12], sub_level);
 
+    return ret;
+  },
+  parse_CP: function parse_CP(data = '', level) {
+    //<price (MO)> ^ <price type (ID)> ^ <from value (NM)> ^ <to value (NM)> ^ <range units (CE)> ^ <range type (ID)>
+    const levelData = getLevel(level);
+    const delim = levelData.delim;
+    const sub_level = levelData.sub_level;
+
+    const components = data.split(delim);
+
+    let ret = {};
+    this.price = this.parse_MO(components[0], sub_level);
+    this.price_type = this.parse_ID(components[1], sub_level);
+    this.from_value = this.parse_NM(components[2], sub_level);
+    this.to_value = this.parse_NM(components[3], sub_level);
+    this.range_units = this.parse_CE(components[4], sub_level);
+    this.range_type = this.parse_ID(components[5], sub_level);
+
+    return ret;
+  },
+  parse_JCC: function parse_JCC(data = '', level) {
+    //<job code (IS)> ^ <job class (IS)>
+    const levelData = getLevel(level);
+    const delim = levelData.delim;
+    const sub_level = levelData.sub_level;
+
+    const components = data.split(delim);
+
+    let ret = {};
+
+    // this.job_code = this.parse_IS(components[0], sub_level);
+    // this.job_class = this.parse_IS(components[1], sub_level);
+
+    return ret;
+  },
+  parse_TQ: function parse_TQ(data = '', level) {
+    //<quantity (CQ)> ^ <interval (*)> ^ <duration (*)> ^ <start date/time (TS)> ^
+    // <end date/time (TS)> ^ <priority (ID)> ^ <condition (ST)> ^ <text (TX)> ^ <conjunction (ID)> ^ <order sequencing (*)>
+    const levelData = getLevel(level);
+    const delim = levelData.delim;
+    const sub_level = levelData.sub_level;
+
+    const components = data.split(delim);
+
+    let ret = {};
+    ret.quantity = this.parse_CQ(components[0], sub_level);
+    ret.interval = this.parse_FT(components[1], sub_level);
+    ret.duration = this.parse_FT(components[2], sub_level);
+    ret.start_date = this.parse_TS(components[3], sub_level);
+    ret.end_date = this.parse_TS(components[4], sub_level);
+    ret.priority = this.parse_ID(components[5], sub_level);
+    ret.condition = this.parse_ST(components[6], sub_level);
+    ret.text = this.parse_TX(components[7], sub_level);
+    ret.conjunction = this.parse_ID(components[8], sub_level);
+    ret.order_sequencing = this.parse_FT(components[9], sub_level);
     return ret;
   }
 };

@@ -38,6 +38,20 @@ describe('Parse ORM', () => {
         case 'PID':
           message_json.patient = pid_parser(segment);
           break;
+        case 'PV1':
+          message_json.visit = pv1_parser(segment);
+          break;
+        case 'GT1':
+          message_json.garentor = gt1_parser(segment);
+          break;
+        case 'IN1':
+          message_json.insurance = in1_parser(segment);
+          break;
+        case 'ORC':
+          message_json.order_control = orc_parser(segment);
+          break;
+        case 'OBR':
+          message_json.observation = obr_parser(segment);
         default:
           break;
       }

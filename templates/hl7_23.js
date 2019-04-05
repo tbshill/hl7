@@ -69,7 +69,10 @@ const templates = {
     this.order_status = components => datatypes.parse_ID(components[5]);
     this.response_flag = components => datatypes.parse_ID(components[6]);
     this.quanity_timing = components => datatypes.parse_TQ(components[7]);
-    this.parent = components => datatypes.parse_CM(components[8]); // TODO: BUILD CM Callback
+    this.parent = components =>
+      datatypes.parse_CM(components[8], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
     this.transaction_date = components => datatypes.parse_TS(components[9]);
     this.entered_by = components => datatypes.parse_XCN(components[10]);
     this.verified_by = components => datatypes.parse_XCN(components[11]);
@@ -132,7 +135,10 @@ const templates = {
     this.delete_account_indicator = components => datatypes.parse_IS(components[34]);
     this.delete_account_date = components => datatypes.parse_DT(components[35]);
     this.discharge_disposition = components => datatypes.parse_IS(components[36]);
-    this.discharged_to = components => datatypes.parse_CM(components[37]); // TODO: BUILD CM Callback
+    this.discharged_to = components =>
+      datatypes.parse_CM(components[37], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
     this.diet_type = components => datatypes.parse_IS(components[38]);
     this.servicing_facility = components => datatypes.parse_IS(components[39]);
     this.bed_status = components => datatypes.parse_IS(components[40]);
@@ -200,7 +206,10 @@ const templates = {
     this.danger_code = components => datatypes.parse_CE(components[12]);
     this.relevant_clinical_info = components => datatypes.parse_ST(components[13]);
     this.specimen_recieved_time = components => datatypes.parse_TS(components[14]);
-    this.specimen_source = components => datatypes.parse_CM(components[15]); // TODO: BUILD CM Callback
+    this.specimen_source = components =>
+      datatypes.parse_CM(components[15], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
     this.ordering_provider = components => datatypes.parse_XCN(components[16]);
     this.order_callback_phone_number = components => datatypes.parse_XTN(components[17]);
     this.placer_feild1 = components => datatypes.parse_ST(components[18]);
@@ -208,19 +217,40 @@ const templates = {
     this.filler_feild1 = components => datatypes.parse_ST(components[20]);
     this.filler_feild2 = components => datatypes.parse_ST(components[21]);
     this.results_change_time = components => datatypes.parse_TS(components[22]);
-    this.charge_to_practice = components => datatypes.parse_CM(components[23]); // TODO: BUILD CM Callback
+    this.charge_to_practice = components =>
+      datatypes.parse_CM(components[23], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
     this.diagnostic_service_section_id = components => datatypes.parse_ID(components[24]);
     this.result_status = components => datatypes.parse_ID(components[25]);
-    this.parent_result = components => datatypes.parse_CM(components[26]); // TODO: BUILD CM Callback
+    this.parent_result = components =>
+      datatypes.parse_CM(components[26], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
     this.quantity_timing = components => datatypes.parse_TQ(components[27]);
     this.result_copies_top = components => datatypes.parse_XCN(components[28]);
-    this.parent = components => datatypes.parse_CM(components[29]); // TODO: BUILD CM Callback
+    this.parent = components =>
+      datatypes.parse_CM(components[29], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
     this.transporation_mode = components => datatypes.parse_ID(components[30]);
     this.reason_for_study = components => datatypes.parse_CE(components[31]);
-    this.principal_result_interpreter = components => datatypes.parse_CM(components[32]); // TODO: BUILD CM Callback
-    this.assistant_result_interpreter = components => datatypes.parse_CM(components[33]); // TODO: BUILD CM Callback
-    this.technician = components => datatypes.parse_CsM(components[34]);
-    this.transcriptionist = components => datatypes.parse_CM(components[35]); // TODO: BUILD CM Callback
+    this.principal_result_interpreter = components =>
+      datatypes.parse_CM(components[32], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
+    this.assistant_result_interpreter = components =>
+      datatypes.parse_CM(components[33], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
+    this.technician = components =>
+      datatypes.parse_CM(components[34], data => {
+        return data;
+      });
+    this.transcriptionist = components =>
+      datatypes.parse_CM(components[35], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
     this.scheduled_time = components => datatypes.parse_TS(components[36]);
     this.number_of_sample_containers = components => datatypes.parse_NM(components[37]);
     this.transport_logistics_of_sample = components => datatypes.parse_CE(components[38]);
@@ -263,7 +293,10 @@ const templates = {
     this.insured_group_emp_name = components => datatypes.parse_XON(components[11]);
     this.plan_effective_date = components => datatypes.parse_DT(components[12]);
     this.plan_expiration_date = components => datatypes.parse_DT(components[13]);
-    this.authorization_information = components => datatypes.parse_CM(components[14]); // TODO: BUILD CM Callback
+    this.authorization_information = components =>
+      datatypes.parse_CM(components[14], data => {
+        return data;
+      }); // TODO: BUILD CM Callback
     this.plan_type = components => datatypes.parse_IS(components[15]);
     this.name_of_issued = components => datatypes.parse_XPN(components[16]);
     this.insured_replationship_to_patient = components => datatypes.parse_CE(components[17]);
@@ -278,7 +311,7 @@ const templates = {
     this.report_of_eligibility_date = components => datatypes.parse_DT(components[26]);
     this.release_information_code = components => datatypes.parse_IS(components[27]);
     this.pac = components => datatypes.parse_ST(components[28]);
-    this.verification_time = components => datatypes.parse_tS(components[29]);
+    this.verification_time = components => datatypes.parse_TS(components[29]);
     this.verification_by = components => datatypes.parse_XCN(components[30]);
     this.type_of_agreement_code = components => datatypes.parse_IS(components[31]);
     this.billing_status = components => datatypes.parse_IS(components[32]);
