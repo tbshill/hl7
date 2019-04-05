@@ -17,11 +17,20 @@ const hl7_string = fs
 const $segments = hl7_string.split('\n');
 
 const removeEmpty = obj => {
-  Object.entries(obj).forEach(
-    ([key, val]) =>
-      (val && typeof val === 'object' && removeEmpty(val)) ||
-      ((val === null || val === '') && delete obj[key])
-  );
+  Object.entries(obj).forEach(([key, val]) => {
+    if (val && typeof val === 'object') {
+      removeEmpty(val);
+    }
+    if (val === null) {
+      delete obj[key];
+    } else if (val === '') {
+      delete obj[key];
+    } else if (val && typeof val === 'object') {
+      if (Object.entries(val).length == 0) {
+        delete obj[key];
+      }
+    }
+  });
   return obj;
 };
 
