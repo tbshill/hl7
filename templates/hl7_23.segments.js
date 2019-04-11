@@ -545,6 +545,14 @@ const templates = {
     this.diplicate_patient = components => datatypes.parse_CX(components[10]);
     this.publicity_indicator = components => datatypes.parse_CE(components[11]);
     this.protection_indicator = components => datatypes.parse_ID(components[12]);
+  },
+  acc_template: function acc_template() {
+    this.accident_time = components => datatypes.parse_TS(components[1]);
+    this.accident_code = components => datatypes.parse_CE(components[2]);
+    this.accident_location = components => datatypes.parse_ST(components[3]);
+    this.auto_accident_state = components => datatypes.parse_CE(components[4]);
+    this.job_related_indicator = components => datatypes.parse_ID(components[5]);
+    this.death_indicator = components => datatypes.parse_ID(components[6]);
   }
 };
 
