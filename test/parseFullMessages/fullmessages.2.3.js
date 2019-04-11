@@ -20,9 +20,17 @@ const removeEmpty = obj => {
     } else if (val === '') {
       delete obj[key];
     } else if (val && typeof val === 'object') {
-      if (Object.entries(val).length == 0) {
+      let newval = JSON.stringify(val);
+      if (newval === null) {
+        delete obj[key];
+      } else if (newval === '') {
+        delete obj[key];
+      } else if (newval === '{}') {
         delete obj[key];
       }
+
+      // if (Object.entries(val).length == 0) {
+      //   delete obj[key];
     }
   });
   return obj;
@@ -70,6 +78,7 @@ function parseORM() {
 
 describe('Parse ORM', () => {
   it('Should nievely parse an ORM', () => {
-    parseORM();
+    const parsed = parseORM();
+    fs.writeFileSync('./parsed.json', JSON.stringify(parsed));
   });
 });
