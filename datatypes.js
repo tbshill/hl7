@@ -37,7 +37,7 @@ const datatypes = {
       string_data.push(encoder(data))
     }
     return string_data.join(repeater)
-  }
+  },
 
   parse_ST: function parse_ST(data = '', level) {
     return data || '';
