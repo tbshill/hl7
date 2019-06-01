@@ -17,8 +17,28 @@ function getLevel(level) {
 
   return { delim: delim, sub_level: sub_level };
 }
-
 const datatypes = {
+  parse_repeatable: function parse_repeatable(parser, data, repeater = '~') {
+
+    let ret = []
+    const repeats = data.split('~');
+
+    for (repeat of repeats) {
+      ret.push(parser(data))
+    }
+
+    return ret;
+
+  },
+
+  to_repeatable: function to_repeatable(encoder, data, repeater = '~') {
+    let string_data = [];
+    for (let d of data) {
+      string_data.push(encoder(data))
+    }
+    return string_data.join(repeater)
+  }
+
   parse_ST: function parse_ST(data = '', level) {
     return data || '';
   },

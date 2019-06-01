@@ -42,7 +42,6 @@ class MLLPServer extends EventEmitter {
                     // Offload the responsibility of creating an ACK 
                     this.emit('mllp', { data: this.message, socket: socket });
                 }
-
             })
         })
     }

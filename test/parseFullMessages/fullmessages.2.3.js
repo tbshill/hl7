@@ -9,6 +9,7 @@ const gt1_parser = segments.builder(new segments.templates['2.3'].gt1_template()
 const in1_parser = segments.builder(new segments.templates['2.3'].in1_template());
 const orc_parser = segments.builder(new segments.templates['2.3'].orc_template());
 const obr_parser = segments.builder(new segments.templates['2.3'].obr_template());
+const acc_parser = segments.builder(new segments.templates['2.3'].acc_template());
 
 const removeEmpty = obj => {
   Object.entries(obj).forEach(([key, val]) => {
@@ -67,6 +68,9 @@ function parseORM() {
         break;
       case 'OBR':
         message_json.observation = obr_parser(segment);
+        break;
+      case 'ACC':
+        message_json.accident = acc_parser(segment);
       default:
         break;
     }
