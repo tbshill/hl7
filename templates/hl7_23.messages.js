@@ -1,0 +1,1 @@
+const segments = require('./hl7_23.segments');

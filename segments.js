@@ -23,10 +23,32 @@ function builder(template, parser_adjustments = {}) {
   };
 }
 
+function buildParser(template, parser_adjustments = {}) {
+  return segment => {
+    const components = segment.split('|');
+
+    const ret = {};
+
+    //TODO: fix the assumption that there will always be a 
+    // component in the message for every component in the standard
+
+    for (let i = 0; i < template.keys.length; i++) {
+      const key = template.keys[i];
+      const datatype = template.datatypes[i];
+      const data_parser = datatype_parser(datatype, 'C')
+      ret[key] = data_parser(components[i]);
+    }
+
+    return ret;
+
+  }
+}
+
 module.exports = {
   templates: {
     '2.3': require('./templates/hl7_23.segments'),
-    '2.3.1': () => console.log('Not Implemented')
+    // '2.3.1': () => console.log('Not Implemented')
   },
-  builder: builder
+  builder: builder,
+  builParser: buildParser
 };
