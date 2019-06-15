@@ -4,9 +4,6 @@ var EventEmitter = require('events').EventEmitter;
 class MLLPServer extends EventEmitter {
     constructor(host, port, options) {
         super();
-
-        this.consumer = undefined;
-
         const VT = String.fromCharCode(0x0b);
         const FS = String.fromCharCode(0x1c);
         const CR = String.fromCharCode(0x0d);
@@ -46,7 +43,9 @@ class MLLPServer extends EventEmitter {
                     // Emit the Data after the trailer
                     // Push the message into the Event Loop
                     // Offload the responsibility of creating an ACK 
-                    this.emit('mllp', { data: this.message, socket: socket });
+                    const context = this.getSummary();
+                    context.socket = socket;
+                    this.emit('mllp', { data: this.message, context: context });
                     this.messageCount += 1;
                 }
             })
@@ -106,10 +105,10 @@ class MLLPServer extends EventEmitter {
         let hl7 = event.data;
         let context = this.getSummary();
         context.socket = event.socket;
-
-        if (this.consumer) {
-            this.consumer.consume(hl7, context);
-        }
+        // FIXME: This is not general enough for NPM
+        // if (this.consumer) {
+        //     this.consumer.consume(hl7, context);
+        // }
     }
 
 }
